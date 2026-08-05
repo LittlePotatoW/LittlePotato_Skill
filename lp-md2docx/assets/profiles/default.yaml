@@ -1,0 +1,108 @@
+# 默认样式表
+# 使用场景：用户未指定 --profile 时的默认样式
+name: default
+display: 默认通用（参考设计文档）
+
+page:
+  size: A4
+  margins:
+    top: 25.4mm
+    bottom: 25.4mm
+    left: 31.8mm
+    right: 31.8mm
+
+fonts:
+  east_asia: 等线
+  latin: 等线
+
+title:
+  font: 黑体
+  size: 二号
+  bold: true
+  align: center
+  space_before: 12pt
+  space_after: 24pt
+  line_spacing: 1.5
+
+heading:
+  base: 黑体
+  color: "000000"
+  1:
+    size: 小二
+    bold: true
+    align: left
+    space_before: 12pt
+    space_after: 12pt
+    num_format: "%1"
+    num_fmt: decimal
+  2:
+    size: 小三
+    bold: false
+    align: left
+    space_before: 6pt
+    space_after: 6pt
+    num_format: "%1.%2"
+  3:
+    size: 四号
+    bold: false
+    align: left
+    space_before: 6pt
+    space_after: 6pt
+    num_format: "%1.%2.%3"
+  4:
+    font: 微软雅黑
+    size: 小四
+    bold: true
+    align: left
+    space_before: 4pt
+    space_after: 2pt
+    num_format: "%1.%2.%3.%4"
+  5:
+    size: 小四
+    bold: false
+    align: left
+    num_format: "%1.%2.%3.%4.%5"
+  6:
+    size: 小四
+    bold: false
+    align: left
+    num_format: "%1.%2.%3.%4.%5.%6"
+
+body:
+  size: 小四
+  line_spacing: 1.5
+  first_line_indent: 2ch
+  align: justify
+
+image:
+  max_width: 14.5cm
+  caption:
+    enabled: true
+    prefix: "图"
+    font: 黑体
+    size: 小四
+    bold: true
+    align: center
+
+table:
+  style_name: 标准表格
+  style_kind: grid
+  cell_align: center
+  header_bold: false
+  caption:
+    enabled: true
+    prefix: "表"
+    font: 黑体
+    latin: 宋体
+    size: 小四
+    bold: true
+    align: center
+  font:
+    east_asia: 等线
+    latin: 等线
+    size: 小四
+
+code:
+  font: Consolas
+  east_asia: 宋体
+  size: 10.5pt
