@@ -1,0 +1,25 @@
+#!/bin/sh
+# LittlePotato pre-commit 钩子入口（Git for Windows / macOS / Linux 通用）
+# 逻辑主体在同目录的 pre-commit.py，配置在同目录的 pre-commit-config.json。
+set -u
+
+if [ -n "${LP_GIT_HOOK_SKIP:-}" ]; then
+  echo "pre-commit: LP_GIT_HOOK_SKIP=1，跳过检查" >&2
+  exit 0
+fi
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
+hook_dir="$repo_root/tool/git-hook"
+LP_HOOK_REPO_ROOT="$repo_root"
+export LP_HOOK_REPO_ROOT
+
+if command -v python3 >/dev/null 2>&1; then
+  exec python3 "$hook_dir/pre-commit.py" "$@"
+elif command -v python >/dev/null 2>&1; then
+  exec python "$hook_dir/pre-commit.py" "$@"
+elif command -v py >/dev/null 2>&1; then
+  exec py -3 "$hook_dir/pre-commit.py" "$@"
+fi
+
+echo "pre-commit: 未找到 Python，请安装 Python 3 并加入 PATH" >&2
+exit 1

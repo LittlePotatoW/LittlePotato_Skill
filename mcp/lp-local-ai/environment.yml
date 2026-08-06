@@ -1,0 +1,16 @@
+# lp-local-ai 的 conda 环境定义
+#
+# 用法（必须在仓库根目录执行，pip 的 -e 路径是相对当前目录的）：
+#   conda env create -f mcp/lp-local-ai/environment.yml
+#   conda activate lp-mcp
+name: lp-mcp
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - pip
+  - pip:
+      - mcp>=2.0
+      - httpx>=0.27
+      - rapidocr>=3.9
+      - -e ./mcp/lp-local-ai

@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+
+# 模型权重
+*.gguf
+*.safetensors
+*.onnx
+*.pt
+*.pth
+
+# 系统
+Thumbs.db
+.DS_Store

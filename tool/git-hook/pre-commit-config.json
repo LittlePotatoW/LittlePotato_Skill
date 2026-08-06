@@ -1,0 +1,20 @@
+{
+  "max_images": 1,
+  "max_file_size_mb": 1.0,
+  "image_extensions": [
+    "png", "jpg", "jpeg", "gif", "bmp", "webp", "svg", "tif", "tiff",
+    "ico", "avif", "heic", "heif", "psd", "raw", "cr2", "nef", "arw"
+  ],
+  "blocked_extensions": [
+    "exe", "msi", "dll", "so", "dylib", "bin", "o", "obj", "lib", "a",
+    "class", "jar", "war", "pyc", "pyo", "pyd", "whl", "egg",
+    "zip", "tar", "gz", "tgz", "bz2", "xz", "7z", "rar", "iso", "dmg",
+    "pdb", "db", "sqlite", "sqlite3", "log", "tmp", "temp", "bak", "old",
+    "swp", "swo", "orig", "rej", "dmp", "minidump", "pcap", "cap"
+  ],
+  "blocked_filenames": [
+    "Thumbs.db", ".DS_Store", "desktop.ini", ".env"
+  ],
+  "check_binary": true,
+  "check_notebook_outputs": true
+}
