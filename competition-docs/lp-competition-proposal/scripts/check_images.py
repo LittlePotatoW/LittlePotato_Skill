@@ -51,9 +51,7 @@ def main(argv=None):
             for name in os.listdir(images_dir)
             if name.lower().endswith(IMAGE_EXT)
         }
-        unused = sorted(
-            existing - {os.path.basename(r).lower() for r in refs}
-        )
+        unused = sorted(existing - {os.path.basename(r).lower() for r in refs})
 
     print(f"图片引用 {len(refs)} 个：已有 {len(found)}，缺失 {len(missing)}")
     if missing:

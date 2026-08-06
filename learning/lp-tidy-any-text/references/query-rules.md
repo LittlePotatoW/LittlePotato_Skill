@@ -1,4 +1,4 @@
-# 查询规则.md
+# query-rules.md
 
 > 填写后放入 `rule/` 目录
 
