@@ -1,0 +1,12 @@
+{
+  "name": "lp-local-ai",
+  "description": "本地 AI 工具 MCP：OCR（中英）+ 本地大模型（翻译/摘要/改写），数据不出本机",
+  "command": "uv",
+  "args": [
+    "run",
+    "--project",
+    "{repo}/mcp/lp-local-ai",
+    "lp-local-ai"
+  ],
+  "env": {}
+}
