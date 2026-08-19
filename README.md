@@ -1,35 +1,63 @@
 # LittlePotato Skill
 
-LittlePotato 的个人 AI 工具库：Claude Code / Codex 技能 + 可分享的 MCP 服务器。
+LittlePotato 的个人 AI 工具库：技能（Skills）、MCP 服务器、自定义工具、插件、工作流与提示词模板。
+
+## 仓库结构
+
+| 分类 | 路径 | 说明 |
+|------|------|------|
+| 技能 | [skills/](./skills/) | Claude Code / Codex 技能（SKILL.md 规范） |
+| MCP | [mcp/](./mcp/) | 可分享的 MCP 服务器 |
+| 工具 | [tools/](./tools/) | 自定义工具：git 钩子、CLI 脚本等 |
+| 插件 | [plugins/](./plugins/) | 平台插件（目前只收 Codex） |
+| 工作流 | [workflows/](./workflows/) | 可复用工作流 |
+| 提示词 | [prompts/](./prompts/) | 提示词模板 |
+| 维护脚本 | [scripts/](./scripts/) | 仓库维护脚本（索引、同步、注册） |
+| 文档 | [docs/](./docs/) | 仓库教程与使用指南 |
+| 归档 | [archive/](./archive/) | 弃用但保留的内容 |
+
+> 技能、MCP、工具、插件、工作流、提示词的索引由 `scripts/index.py` 自动维护，手动编辑会在一键生成时被覆盖。
 
 ## 技能目录
 
-### Learning
-
-| 技能 | 说明 |
-|------|------|
-| [lp-tidy-any-text](./skills/learning/lp-tidy-any-text/) | 将任意学科的杂乱复习资料整理成结构化复习文件 |
+<!-- lp:index:begin:skills -->
 
 ### Competition Docs
 
-| 技能 | 说明 |
+| 名称 | 说明 |
 |------|------|
-| [lp-md2docx](./skills/competition-docs/lp-md2docx/) | 将 Markdown + 图片文件夹转换为带样式表和多级标题的 Word 文档（比赛文档专用） |
-| [lp-competition-proposal](./skills/competition-docs/lp-competition-proposal/) | 根据代码与材料分阶段生成比赛项目计划书（文字稿→图片映射表→调研补全→最终 .md） |
+| [lp-competition-proposal](skills/competition-docs/lp-competition-proposal/) | 根据代码文件夹和项目计划书要求，分阶段生成大学生比赛项目计划书： 先产出纯文字稿并列出所需图片，收集图片后生成正式版 .md， 再结合比赛背景材料调研补全（竞品分析、项目背景、项目意义等）， 最终形成 .md 版计划书，图片统一放在单独文件夹。 触发条件：写项目计划书、商业计划书、比赛项目文档、根据代码生成文档、 计… |
+| [lp-md2docx](skills/competition-docs/lp-md2docx/) | 将 Markdown 文档 + 图片文件夹转换为带样式表和多级标题的 Word 文档（.docx）， 面向大学生比赛文档（商业计划书、计算机设计大赛项目文档等论文格式文档）。 触发条件：把 md 转成 word、md 转 docx、生成比赛文档、商业计划书排版、 按样式表转换 Markdown、生成带多级编号标题的… |
+
+### Learning
+
+| 名称 | 说明 |
+|------|------|
+| [lp-tidy-any-text](skills/learning/lp-tidy-any-text/) | 将任意学科的杂乱复习资料（PDF、DOCX、DOC、XMIND、图片等）整理成结构化复习文件。 触发条件：整理课程资料、复习资料、期末复习、按章节归纳知识点、去重整理题目、 分类归档学习资料、将杂乱的源文件整理成可打印的复习文档等。 |
+
+<!-- lp:index:end:skills -->
 
 ## MCP 目录
 
-| MCP | 说明 |
+<!-- lp:index:begin:mcp -->
+
+| 名称 | 说明 |
 |------|------|
-| [lp-local-ai](./mcp/lp-local-ai/) | 本地 OCR（中英）+ 本地大模型（翻译/摘要/改写），数据不出本机 |
+| [lp-local-ai](mcp/lp-local-ai/) | 本地 AI 工具 MCP：OCR（中英）+ 本地大模型（翻译/摘要/改写）。 所有数据都在本机处理，不发送到任何云端服务。 |
+
+<!-- lp:index:end:mcp -->
 
 安装与注册方法见 [mcp/README.md](./mcp/README.md)。
 
 ## 工具
 
-| 工具 | 说明 |
+<!-- lp:index:begin:tools -->
+
+| 名称 | 说明 |
 |------|------|
-| [git 提交钩子](./tool/git-hook/) | pre-commit 检查：图片数量、文件大小、后缀排除表、二进制文件、Jupyter 未清空输出 |
+| [git-hook](tools/git-hook/) | 提交前自动检查暂存区，命中以下任一规则就阻止提交： |
+
+<!-- lp:index:end:tools -->
 
 ## 安装
 
@@ -44,3 +72,7 @@ LittlePotato 的个人 AI 工具库：Claude Code / Codex 技能 + 可分享的 
 ```
 <项目>/.claude/skills/<skill-name>/
 ```
+
+## 仓库规范
+
+给 AI 协作者与贡献者的约定见 [AGENTS.md](./AGENTS.md)；仓库文档见 [docs/](./docs/)。
