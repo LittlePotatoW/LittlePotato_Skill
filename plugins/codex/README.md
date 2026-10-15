@@ -1,13 +1,12 @@
 # Codex Plugins
 
-Codex 相关插件、扩展与自定义配置。当前为空。
+Codex 插件及扩展配置。
 
-计划收录：
-
-- Codex 官方/社区插件
-- 自定义配置（如全局指令、MCP 注册片段）
+| 插件 | 说明 |
+|------|------|
+| [creative-consultant](creative-consultant/) | 显式调用 DeepSeek 的创意顾问插件，包含技能与 API 调用脚本。 |
 
 ## 约定
 
-- 一个插件一个子目录（`lp-` 前缀 + kebab-case）。
-- 目录内 README 说明安装与启用方式。
+- 一个插件一个子目录，目录名与插件 ID 一致并使用 kebab-case。
+- 插件目录包含安装与使用说明，以及插件清单和所需资源。

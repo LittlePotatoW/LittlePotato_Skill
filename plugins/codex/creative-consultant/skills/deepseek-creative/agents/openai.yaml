@@ -1,0 +1,7 @@
+interface:
+  display_name: "DeepSeek 创意顾问"
+  short_description: "显式调用 DeepSeek，拓展创意思路"
+  default_prompt: "Use $deepseek-creative to ask DeepSeek once for unexpected creative ideas about this topic."
+
+policy:
+  allow_implicit_invocation: false

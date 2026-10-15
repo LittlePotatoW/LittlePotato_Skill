@@ -1,0 +1,20 @@
+{
+  "name": "littlepotato-skill-local",
+  "interface": {
+    "displayName": "LittlePotato Skill"
+  },
+  "plugins": [
+    {
+      "name": "creative-consultant",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codex/creative-consultant"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
