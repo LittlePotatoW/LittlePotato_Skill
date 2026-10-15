@@ -77,3 +77,10 @@ test('explains server-side context and payload limits without echoing response c
   }), (error) => /缩短文本或拆分/u.test(error.message) && !error.message.includes('sensitive echo'));
   await assert.rejects(polish({ text: '原文' }, { env, fetchImpl: async () => response({}, 413) }), /拆分/u);
 });
+
+test('identifies GLM-4.7-Flash model load from BigModel error code 1305', async () => {
+  await assert.rejects(polish({ text: '原文' }, {
+    env,
+    fetchImpl: async () => response({ error: { code: 1305, message: '该模型当前访问量过大，请您稍后再试' } }, 429),
+  }), /当前访问量较大，请稍后重试/u);
+});

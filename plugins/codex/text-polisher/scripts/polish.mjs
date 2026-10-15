@@ -53,11 +53,15 @@ function validateInput(input) {
   return { text: input.text, style: input.style?.trim() || '', maxTokens };
 }
 
-function errorMessage(status, apiMessage = '') {
+function errorMessage(status, apiMessage = '', apiCode = '') {
   const details = apiMessage.toLowerCase();
   if (status === 413 || /context|token|too long|maximum length|上下文|令牌|超长|长度/u.test(details)) {
     return '服务拒绝了这段文本，可能超过模型上下文或账户额度限制。请缩短文本或拆分后重试。';
   }
+  if (status === 429 && String(apiCode) === '1305') {
+    return '智谱 BigModel：GLM-4.7-Flash 当前访问量较大，请稍后重试。';
+  }
+  if (status === 429) return '智谱 BigModel 当前限流或服务繁忙（HTTP 429），请稍后重试。';
   if (status) return `智谱 BigModel 请求失败（HTTP ${status}）。请检查密钥、账户额度或稍后重试。`;
   return '无法连接智谱 BigModel，请检查网络后重试。';
 }
@@ -103,7 +107,11 @@ export async function polish(input, { env = process.env, cwd = process.cwd(), fe
       throw new Error('智谱 BigModel 返回了无效响应。');
     }
     if (!response.ok) {
-      throw new Error(errorMessage(response.status, data?.error?.message || data?.message || ''));
+      throw new Error(errorMessage(
+        response.status,
+        data?.error?.message || data?.message || '',
+        data?.error?.code ?? data?.code ?? '',
+      ));
     }
     const result = data?.choices?.[0]?.message?.content;
     if (typeof result !== 'string' || !result.trim()) {
