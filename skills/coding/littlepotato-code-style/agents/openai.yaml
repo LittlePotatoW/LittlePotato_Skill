@@ -1,4 +1,0 @@
-interface:
-  display_name: "小土豆代码风格"
-  short_description: "小土豆团队的 Python 代码风格：包结构、类命名空间、类型标注、中文注释与门面类"
-  default_prompt: "请用 $littlepotato-code-style 按小土豆代码风格编写或重构这个 Python 项目"
