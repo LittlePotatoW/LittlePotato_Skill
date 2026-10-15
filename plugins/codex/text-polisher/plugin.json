@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "text-polisher",
+  "version": "0.1.0",
+  "description": "通过 GLM-4.7-Flash 润色用户提供的文本。",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "文本润色助手",
+        "shortDescription": "调用 GLM-4.7-Flash 润色文本"
+      }
+    }
+  }
+}

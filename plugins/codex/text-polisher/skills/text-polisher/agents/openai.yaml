@@ -1,0 +1,7 @@
+interface:
+  display_name: "文本润色助手"
+  short_description: "通过 GLM-4.7-Flash 润色指定文本"
+  default_prompt: "Use $text-polisher to polish the text below while preserving its meaning."
+
+policy:
+  allow_implicit_invocation: false
