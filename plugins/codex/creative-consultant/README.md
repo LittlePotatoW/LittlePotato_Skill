@@ -10,7 +10,7 @@
 codex plugin marketplace add .
 ```
 
-然后在 Codex 插件界面打开 `littlepotato-skill-local` 市场，安装并启用 **DeepSeek 创意顾问**。启用后可从 `/` 菜单选择，或显式调用 `$deepseek-creative`。该技能不允许隐式调用。
+然后在 Codex 插件界面打开 `littlepotato-skill-local` 市场，安装并启用 **DeepSeek Creative Consultant**。启用后可从 `/` 菜单选择，或显式调用 `$deepseek-creative`。该技能不允许隐式调用。
 
 ## 配置
 
@@ -44,3 +44,5 @@ DEEPSEEK_API_KEY=你的DeepSeek_API_Key
 - 需要可用的 Node.js（内置 `fetch`）。
 - 需要 DeepSeek API Key 和网络连接。
 - 当前版本：`0.1.0`。
+
+插件清单位于 `.codex-plugin/plugin.json`，其中的 `skills` 字段声明技能目录。用户级默认参数文件位于 `$CODEX_HOME/creative-consultant/config.json`；未设置 `CODEX_HOME` 时使用 `~/.codex/creative-consultant/config.json`。项目配置覆盖用户级默认参数，单次请求参数优先级最高。

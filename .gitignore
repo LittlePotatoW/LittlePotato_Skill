@@ -15,3 +15,5 @@ Thumbs.db
 # 本地 AI 插件配置（可能包含密钥或个人默认值）
 .env.local
 .creative-consultant.json
+
+.codex/

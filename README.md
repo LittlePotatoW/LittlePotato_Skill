@@ -22,6 +22,12 @@ LittlePotato 的个人 AI 工具库：技能（Skills）、MCP 服务器、自�
 
 <!-- lp:index:begin:skills -->
 
+### Coding
+
+| 名称 | 说明 |
+|------|------|
+| [lp-build-orchestrator](skills/coding/lp-build-orchestrator/) | Coordinate non-trivial software construction by delegating independent research, implementation, review, or testing tasks to as many subagents as useful, or th… |
+
 ### Competition Docs
 
 | 名称 | 说明 |

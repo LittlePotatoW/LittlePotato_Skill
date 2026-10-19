@@ -1,0 +1,14 @@
+{
+  "name": "creative-consultant",
+  "version": "0.1.0",
+  "description": "Ask DeepSeek once for high-variation creative ideas and return the result to Codex.",
+  "author": {
+    "name": "Local"
+  },
+  "interface": {
+    "displayName": "DeepSeek Creative Consultant",
+    "shortDescription": "Ask DeepSeek for unexpected creative ideas",
+    "category": "Productivity"
+  },
+  "skills": "./skills/"
+}
