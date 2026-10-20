@@ -8,6 +8,7 @@
 """
 
 import os
+import ntpath
 import re
 
 from docx import Document
@@ -701,15 +702,36 @@ def _setup_styles(document, cfg):
 
 
 def _find_image(path, images_dir, md_dir):
-    candidates = [
-        os.path.join(images_dir, path),
-        os.path.join(images_dir, os.path.basename(path)),
-        os.path.join(md_dir, path),
-        path,
-    ]
-    for c in candidates:
-        if os.path.isfile(c):
-            return c
+    # Markdown may be untrusted. Resolve symlinks before checking containment so
+    # a seemingly local image cannot point outside either resource directory.
+    if os.path.isabs(path) or ntpath.isabs(path) or ntpath.splitdrive(path)[0]:
+        return None
+
+    candidates = []
+    roots = []
+    for root in (images_dir, md_dir):
+        if not root:
+            continue
+        real_root = os.path.realpath(root)
+        roots.append(real_root)
+        candidates.append(os.path.join(root, path))
+        # Keep the legacy basename lookup for ordinary subfolder references,
+        # but never let it turn an escaping ../ path into a different local file.
+        path_parts = path.replace("\\", "/").split("/")
+        if root == images_dir and ".." not in path_parts:
+            candidates.append(os.path.join(root, os.path.basename(path)))
+
+    for candidate in candidates:
+        real_candidate = os.path.realpath(candidate)
+        if not os.path.isfile(real_candidate):
+            continue
+        for root in roots:
+            try:
+                if os.path.commonpath((root, real_candidate)) == root:
+                    return real_candidate
+            except ValueError:
+                # Different Windows drives cannot be contained by one another.
+                continue
     return None
 
 

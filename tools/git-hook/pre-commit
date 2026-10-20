@@ -9,7 +9,7 @@ if [ -n "${LP_GIT_HOOK_SKIP:-}" ]; then
 fi
 
 repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
-hook_dir="$repo_root/tool/git-hook"
+hook_dir="$repo_root/tools/git-hook"
 LP_HOOK_REPO_ROOT="$repo_root"
 export LP_HOOK_REPO_ROOT
 

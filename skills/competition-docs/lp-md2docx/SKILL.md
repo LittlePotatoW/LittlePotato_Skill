@@ -42,6 +42,7 @@ python scripts/convert.py 文档.md --images ./figures
 - `--profile`：样式表配置，取 `assets/profiles/` 下的 yaml 文件名，或直接给 yaml 路径；
   不指定时用 `default.yaml`
 - `--images`：图片文件夹，默认 md 同目录 `images/`
+- 图片引用必须是相对路径，且解析后的文件需位于 Markdown 文件目录或指定图片目录内；绝对路径及通过 `..` 或符号链接逃逸到这些目录之外的引用会被忽略。
 
 示例文档见 `examples/sample.md`。
 

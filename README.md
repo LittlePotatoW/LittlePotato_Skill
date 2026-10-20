@@ -48,7 +48,7 @@ LittlePotato 的个人 AI 工具库：技能（Skills）、MCP 服务器、自�
 
 | 名称 | 说明 |
 |------|------|
-| [lp-local-ai](mcp/lp-local-ai/) | 本地 AI 工具 MCP：OCR（中英）+ 本地大模型（翻译/摘要/改写）。 所有数据都在本机处理，不发送到任何云端服务。 |
+| [lp-local-ai](mcp/lp-local-ai/) | 本地 AI 工具 MCP：OCR（中英）+ 本地大模型（翻译/摘要/改写）。 OCR 在本机处理。文本处理通过 Ollama 完成，默认连接本机地址 http://127.0.0.1:11434；如果配置远程 Ollama 地址，翻译、摘要和改写所用的文本会发送到该地址。请仅配置你信任且获准发送文本的服务端点。 |
 
 <!-- lp:index:end:mcp -->
 

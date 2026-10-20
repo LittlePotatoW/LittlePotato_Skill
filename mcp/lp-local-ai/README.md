@@ -1,7 +1,7 @@
 # lp-local-ai
 
 本地 AI 工具 MCP：**OCR（中英）+ 本地大模型（翻译/摘要/改写）**。
-所有数据都在本机处理，不发送到任何云端服务。
+OCR 在本机处理。文本处理通过 Ollama 完成，默认连接本机地址 `http://127.0.0.1:11434`；如果配置远程 Ollama 地址，翻译、摘要和改写所用的文本会发送到该地址。请仅配置你信任且获准发送文本的服务端点。
 
 ## 工具列表
 
@@ -124,6 +124,8 @@ uv run --project mcp/lp-local-ai python -c "from lp_local_ai.server import trans
 ```bash
 set LP_OLLAMA_MODEL=qwen3:14b
 ```
+
+如需使用远程 Ollama 服务，可将 `LP_OLLAMA_BASE_URL` 设置为该服务地址。配置此变量会使 `translate`、`summarize` 和 `rewrite` 将输入文本发送到配置的端点；默认值为本机 loopback 地址，不会将这些请求发往远程服务。配置远程端点前，请确认其数据处理和隐私策略符合你的要求。
 
 ## 常见问题
 

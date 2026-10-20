@@ -23,4 +23,4 @@ if (Test-Path $target) {
 
 Copy-Item -LiteralPath $hookSource -Destination $target -Force
 Write-Host "pre-commit 钩子已安装: $target"
-Write-Host "下次 git commit 时自动执行；可用 python tool/git-hook/pre-commit.py 手动测试。"
+Write-Host "下次 git commit 时自动执行；可用 python tools/git-hook/pre-commit.py 手动测试。"

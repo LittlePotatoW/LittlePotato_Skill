@@ -54,7 +54,7 @@ def repo_root():
 
 def load_config():
     config = dict(DEFAULT_CONFIG)
-    path = os.path.join(repo_root(), "tool", "git-hook", CONFIG_NAME)
+    path = os.path.join(repo_root(), "tools", "git-hook", CONFIG_NAME)
     if os.path.isfile(path):
         try:
             with open(path, "r", encoding="utf-8") as fh:
@@ -213,7 +213,12 @@ def main():
             and ext not in image_exts
             and ext not in config["blocked_extensions"]
         )
-        if ext == "ipynb" and config.get("check_notebook_outputs", True):
+        max_size_bytes = float(config["max_file_size_mb"]) * 1024 * 1024
+        if (
+            ext == "ipynb"
+            and config.get("check_notebook_outputs", True)
+            and content_len <= max_size_bytes
+        ):
             content = run_git(["cat-file", "blob", sha], cwd=repo_root())
         elif need_binary:
             content = blob_prefix(sha, 8192)

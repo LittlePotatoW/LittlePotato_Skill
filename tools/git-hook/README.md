@@ -15,7 +15,7 @@
 在 PowerShell 中执行：
 
 ```powershell
-.\tool\git-hook\install-hook.ps1
+.\tools\git-hook\install-hook.ps1
 ```
 
 脚本会把 `pre-commit`（bash 入口）复制到 `.git/hooks/pre-commit`，
@@ -26,7 +26,7 @@
 暂存文件后直接运行：
 
 ```powershell
-python tool/git-hook/pre-commit.py
+python tools/git-hook/pre-commit.py
 ```
 
 退出码 0 = 通过，1 = 有文件需要处理。

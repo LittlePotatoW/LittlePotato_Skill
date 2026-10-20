@@ -2,7 +2,7 @@
 
 本地 OCR（中英）+ 本地大模型工具（翻译/摘要/改写）。
 LLM 由 Ollama 提供（OpenAI 兼容接口），OCR 由 RapidOCR 提供，
-所有数据均在本机处理，不发送到云端。
+Ollama 默认连接本机 loopback 地址；如通过 LP_OLLAMA_BASE_URL 配置远程端点，LLM 输入文本会发送到该端点。
 
 启动（stdio 传输）：
     uv run --project mcp/lp-local-ai lp-local-ai
@@ -22,8 +22,8 @@ mcp = MCPServer(
     name="lp-local-ai",
     instructions=(
         "本机 AI 工具集：ocr_image 识别图片中的中英文字；"
-        "translate / summarize / rewrite 调用本地 Ollama 模型处理文本。"
-        "所有数据均在本机处理，不发送到云端。"
+        "translate / summarize / rewrite 调用 Ollama 模型处理文本（默认连接本机服务）。"
+        "如配置 LP_OLLAMA_BASE_URL 为远程端点，文本会发送到该端点；请据此评估数据隐私。"
     ),
 )
 
@@ -66,7 +66,7 @@ def _llm(system: str, user: str) -> str:
 
 @mcp.tool()
 def translate(text: str, target_lang: str = "中文") -> str:
-    """把文本翻译成指定语言（默认中文），只输出译文，数据不出本机。"""
+    """把文本翻译成指定语言（默认中文），只输出译文；文本发往配置的 Ollama 服务。"""
     system = f"你是专业翻译。把用户文本翻译成{target_lang}，只输出译文，不要解释。"
     return _llm(system, text)
 
